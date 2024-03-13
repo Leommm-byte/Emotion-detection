@@ -5,7 +5,7 @@ import websockets
 
 
 async def test_server():
-    async with websockets.connect('ws://localhost:8765') as websocket:
+    async with websockets.connect('ws://emotion-detect.azurewebsites.net:8765') as websocket:
         with open("me-2.png", "rb") as image_file:
             await websocket.send(image_file.read())
         response = await websocket.recv()
