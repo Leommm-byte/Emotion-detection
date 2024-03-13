@@ -1,6 +1,5 @@
 import asyncio
 import websockets
-from PIL import Image
 import io
 
 
