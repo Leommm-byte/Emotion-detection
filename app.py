@@ -4,6 +4,7 @@ import tensorflow as tf
 import asyncio
 import websockets
 import json, io
+import os
 
 face_classifier = cv2.CascadeClassifier(r'haarcascade_frontalface_default.xml')
 
@@ -57,6 +58,6 @@ def recognize_face(message):
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
     loop.run_until_complete(
-        websockets.serve(websocket_handler, "0.0.0.0", 8765, max_size=10**7)
+        websockets.serve(websocket_handler, "0.0.0.0", os.environ.get("PORT", 5000), max_size=10**7)
     )
     loop.run_forever()
